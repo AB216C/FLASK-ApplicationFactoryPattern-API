@@ -32,6 +32,17 @@ pip3 install flask flask-sqlalchemy mysql-connector-python
 
 
 # Add schemas
+Flask-Marshmallow Documentation
+
+Marshmallow is a popular library used in Flask applications to serialize and deserialize data, as well as for input data validation. It works well with ORMs like SQLAlchemy but is not limited to them.
+
+Serialization: Converts complex objects (like SQLAlchemy model objects) into simpler data types (like JSON) to send over the network.
+Deserialization: Converts raw input data into application-specific data structures, such as populating a SQLAlchemy model.
+Validation: Ensures that input data conforms to expected types and formats before processing.
+
+
+## Installation 
+pip3 install flask-marshmallow, marshmallow-sqlalchemy
 
 # API CRUD Endpoints
 
