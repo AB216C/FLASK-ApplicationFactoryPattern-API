@@ -28,6 +28,15 @@ pip install flask flask-sqlalchemy mysql-connector-python
 -mac
 pip3 install flask flask-sqlalchemy mysql-connector-python
 
-##Start coding and importing
+# Add models
 
 
+# Add schemas
+
+# API CRUD Endpoints
+
+.dump() → Marshmallow converts the object(s) to Python-native data types (dicts, lists).
+
+.jsonify() → Flask converts Python dicts/lists to a JSON HTTP response.
+
+setattr(member, field, value) allows us to loop through all the fields and values of our member_data dictionary and update the member.
