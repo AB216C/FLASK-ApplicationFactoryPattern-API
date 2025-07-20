@@ -7,8 +7,6 @@ from flask_marshmallow import Marshmallow
 from marshmallow import ValidationError
 from sqlalchemy import select
 
-
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:Mahirane231995@localhost/Bank'
 
@@ -20,7 +18,6 @@ ma = Marshmallow()
 
 db.init_app(app)
 ma.init_app(app)
-
 
 class Member(Base):
   __tablename__ = 'members'
@@ -41,7 +38,6 @@ loan_book = db.Table(
     db.Column('book_id', db.ForeignKey('books.id'))
 )
 
-
 class Loan(Base):
   __tablename__ = 'loans'
 
@@ -49,10 +45,8 @@ class Loan(Base):
   loan_date: Mapped[date] = mapped_column(db.Date)
   member_id: Mapped[int] = mapped_column(db.ForeignKey('members.id'))
 
-
   member: Mapped['Member'] = db.relationship(back_populates='loans')
   books: Mapped[List['Book']] = db.relationship(secondary=loan_book, back_populates='loans')
-
 
 class Book(Base):
     __tablename__ = "books"
@@ -63,10 +57,7 @@ class Book(Base):
     desc: Mapped[str] = mapped_column(db.String(255), nullable=False)
     title: Mapped[str] = mapped_column(db.String(255), nullable=False)
 
-
     loans: Mapped[List['Loan']] = db.relationship(secondary=loan_book, back_populates='books')
-
-
 
     # CREATING SCHEMAS
 
@@ -156,6 +147,7 @@ def delete_member(member_id):
   db.session.commit()
 
   return jsonify({"Message":f"Member_id:{member_id}, successfully deleted"})
+
 
 with app.app_context():
   db.create_all()
