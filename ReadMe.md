@@ -51,3 +51,5 @@ pip3 install flask-marshmallow, marshmallow-sqlalchemy
 .jsonify() → Flask converts Python dicts/lists to a JSON HTTP response.
 
 setattr(member, field, value) allows us to loop through all the fields and values of our member_data dictionary and update the member.
+
+## APPLICATION FACTORY PATTERN
