@@ -53,3 +53,55 @@ pip3 install flask-marshmallow, marshmallow-sqlalchemy
 setattr(member, field, value) allows us to loop through all the fields and values of our member_data dictionary and update the member.
 
 ## APPLICATION FACTORY PATTERN
+# The Application Factory Pattern in Flask
+What is the Application Factory Pattern?
+# Definition:
+The Application Factory Pattern is a design pattern used to create and configure instances of an application in a modular and flexible manner. Instead of creating a Flask application object directly at the top level, the application factory pattern involves writing a function that returns a new instance of the application.
+# Why Use the Application Factory Pattern?
+# Advantages:
+Modularity: With the incorporation of blueprints, we are able to create a separation of concerns, and compartmentalize actions and interactions
+Scalability: With this increased organization we improve the ability to scale and maintain our API.
+Configuration: Allows for different configurations (e.g., for testing, development, and production) without altering the core application code.
+Testing: Makes it easier to create multiple instances of the app for testing purposes, as each test can create its own isolated app instance.
+Implementing the Application Factory Pattern
+# Basic Structure:
+create_app(): A function that initializes the Flask application and returns it, located in the application folder's init file
+extensions.py: A file used to initialize any other miscellaneous flask extensions (i.e. Flask-Limiter, Flask-cache, etc.)
+blueprints: Are collections of related routes that provides organization and separation of concerns
+models: This is the folder we create our Models
+app.py: Imports our create_app() from application and runs it, instantiating our app
+config.py: Holds our configurations to be used in our create_app() configure the app.
+
+
+## Flask-Limiter
+
+
+1. Understand Flask-Limiter: Learn how to use rate limiting to protect APIs from abuse, such as excessive traffic or DDOS attacks.
+2. Understand Flask-Caching: Use caching to enhance performance by reducing repetitive database queries and improving response times.
+3. Implement Flask-Limiter: Set up rate limits at a global or route-specific level in a Flask API using the Application Factory Pattern.
+4. Implement Flask-Caching: Apply caching to routes that involve expensive or repetitive data retrieval using Flask-Caching.
+
+
+# What is Flask-Limiter?
+Flask-Limiter is an extension that provides rate limiting to Flask applications, which is essential for preventing abuse by limiting the number of requests a client can make to the API. This allows us to protects our API from malicious attacks like DDOS attacks, which are repetitive requests (100's even 1000's per second) used to overwhelm your server.
+Use Cases:
+
+
+# Protecting routes from excessive traffic
+Throttling requests to sensitive endpoints (login, registration, etc.)
+
+
+# Installing Flask-Limiter
+
+
+pip install Flask-Limiter
+
+
+# How Flask-Limiter Works
+Flask-Limiter allows you to set limits per route or globally. The rate limit syntax follows a simple format like 5 per minute or 100 per hour.
+
+
+# Get list of downloaded packages in your folder
+
+
+pip3 freeze > requirements.txt
