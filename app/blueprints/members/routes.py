@@ -81,7 +81,7 @@ def get_member(member_id):
 #UPDATE A MEMBER
 
 @members_bp.route("/members/<int:member_id>", methods=['PUT'])
-
+@token_required
 def update_member(member_id):
   member = db.session.get(Member,member_id)
 
