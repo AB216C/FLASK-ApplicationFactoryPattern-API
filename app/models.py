@@ -18,8 +18,9 @@ class Member(Base):
   id: Mapped[int] = mapped_column(primary_key=True)
   name: Mapped[str] = mapped_column(db.String(255), nullable=False)
   email: Mapped[str] = mapped_column(db.String(360), nullable=False, unique=True)
-  DOB: Mapped[date]
+  DOB: Mapped[date] = mapped_column(nullable=False)
   password: Mapped[str] = mapped_column(db.String(255), nullable=False)
+ 
 
   loans: Mapped[List['Loan']] = db.relationship(back_populates='member') 
 
