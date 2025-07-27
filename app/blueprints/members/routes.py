@@ -4,6 +4,7 @@ from flask import request,jsonify
 from marshmallow import ValidationError
 from sqlalchemy import select
 from . import members_bp
+from app.extentions import limiter,cache
 
 
 #====================Routes================
@@ -32,6 +33,8 @@ def create_member():
 
 #GET SELECTING ALL MEMBERS
 @members_bp.route("/members", methods=['GET'])
+@limiter.limit("5 per 30 seconds") #Limit the number of requests to 5 per 30 seconds
+@cache.cached(timeout=45) #Cache the response for 30 seconds
 def get_members():
   query = select(Member)
   members = db.session.execute(query).scalars().all()

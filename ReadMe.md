@@ -1,16 +1,12 @@
 # Establish one to many, and many to many relationship between models
-
-
 After do the following:
 
 # Installation:
-
 - windows
 python -m venv venv
 
 - mac
 python3 -m venv venv
-
 
 # Activating the environment
 - windows
@@ -19,17 +15,32 @@ venv\Scripts\activate
 - mac
 source venv/bin/activate
 
-
 # Installing packages to the environment
-
 - windows 
 pip install flask flask-sqlalchemy mysql-connector-python
 
 -mac
 pip3 install flask flask-sqlalchemy mysql-connector-python
 
-# Add models
+# Special Installation
 
+# Start with:
+
+python3 -m venv path/to/venv
+source path/to/venv/bin/activate
+
+# Packages:
+python3 -m pip install xyz
+
+python3 -m pip install flask_marshmallow
+
+python3 -m pip install flask_sqlalchemy
+
+python3 -m pip install marshmallow-sqlalchemy
+
+python3 -m pip install mysql-connector-python
+
+python3 -m pip install Flask-Caching
 
 # Add schemas
 Flask-Marshmallow Documentation
@@ -75,7 +86,6 @@ config.py: Holds our configurations to be used in our create_app() configure the
 
 ## Flask-Limiter
 
-
 1. Understand Flask-Limiter: Learn how to use rate limiting to protect APIs from abuse, such as excessive traffic or DDOS attacks.
 2. Understand Flask-Caching: Use caching to enhance performance by reducing repetitive database queries and improving response times.
 3. Implement Flask-Limiter: Set up rate limits at a global or route-specific level in a Flask API using the Application Factory Pattern.
@@ -94,8 +104,7 @@ Throttling requests to sensitive endpoints (login, registration, etc.)
 # Installing Flask-Limiter
 
 
-pip install Flask-Limiter
-
+pip3 install Flask-Limiter --break-system-packages    //Not easy to install without breaking homebrew package
 
 # How Flask-Limiter Works
 Flask-Limiter allows you to set limits per route or globally. The rate limit syntax follows a simple format like 5 per minute or 100 per hour.
@@ -105,3 +114,31 @@ Flask-Limiter allows you to set limits per route or globally. The rate limit syn
 
 
 pip3 freeze > requirements.txt
+
+
+
+pip3 install Flask-Caching --break-system-packages
+
+
+# Start with:
+python3 -m venv path/to/venv
+source path/to/venv/bin/activate
+# Packages:
+python3 -m pip install xyz
+
+python3 -m pip install flask_marshmallow
+
+python3 -m pip install flask_sqlalchemy
+
+python3 -m pip install marshmallow-sqlalchemy
+
+python3 -m pip install mysql-connector-python
+
+python3 -m pip install Flask-Caching
+
+
+# Documentation
+https://flask-limiter.readthedocs.io/en/stable/
+
+https://flask-caching.readthedocs.io/en/latest/
+
