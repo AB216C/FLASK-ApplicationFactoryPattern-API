@@ -15,7 +15,6 @@ class ReceiptSchema(ma.Schema):
   order_items: [
   {item:[item_name: "PSL", price:34.56, quantity:2]},
   {item:[item_name: "PSL", price:34.56, quantity:2]}
-
   ]
   }
   
@@ -42,7 +41,6 @@ class CreateOrderSchema(ma.Schema):
   item_quantity:[item_id:1, quantity:2]
   }
   '''
-
   member_id = fields.Integer(required=True)
   order_date = fields.Date(required=True)
   item_quant = fields.Nested("ItemQuantSchema", many=True)
@@ -51,7 +49,6 @@ class ItemQuantSchema(ma.Schema):
   item_id = fields.Integer(required=True)
   item_quant = fields.Integer(required=True) 
 
-  
 order_schema = OrderSchema() #Allow serialization for a single user
 orders_schema = OrderSchema(many=True) #Allow serialization for many users
 create_order_schema = CreateOrderSchema() #Schema for creating orders

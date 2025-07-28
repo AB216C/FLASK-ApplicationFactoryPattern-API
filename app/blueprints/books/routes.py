@@ -47,10 +47,6 @@ def get_books():
     query = select(Book)
     books = db.session.execute(query).scalars().all()
     return books_schema.jsonify(books),200
-  
-
-
-
 
 #==============RETRIEVE SPECIFIC book====================
 
@@ -62,7 +58,6 @@ def get_book(book_id):
   if book:
     return book_schema.jsonify(book),200
   return jsonify({"Error": "book not found"})
-
 
 #================UPDATE A book========================
 
