@@ -26,8 +26,6 @@ pip3 install flask flask-sqlalchemy mysql-connector-python
 
 # Start with:
 
-
-
 python3 -m venv path/to/venv
 source path/to/venv/bin/activate
 
@@ -90,14 +88,11 @@ models: This is the folder we create our Models
 app.py: Imports our create_app() from application and runs it, instantiating our app
 config.py: Holds our configurations to be used in our create_app() configure the app.
 
-
 ## Flask-Limiter
-
 1. Understand Flask-Limiter: Learn how to use rate limiting to protect APIs from abuse, such as excessive traffic or DDOS attacks.
 2. Understand Flask-Caching: Use caching to enhance performance by reducing repetitive database queries and improving response times.
 3. Implement Flask-Limiter: Set up rate limits at a global or route-specific level in a Flask API using the Application Factory Pattern.
 4. Implement Flask-Caching: Apply caching to routes that involve expensive or repetitive data retrieval using Flask-Caching.
-
 
 # What is Flask-Limiter?
 Flask-Limiter is an extension that provides rate limiting to Flask applications, which is essential for preventing abuse by limiting the number of requests a client can make to the API. This allows us to protects our API from malicious attacks like DDOS attacks, which are repetitive requests (100's even 1000's per second) used to overwhelm your server.
@@ -192,7 +187,6 @@ Here’s the project structure, including a new utils/ folder for utility functi
 │   └── models.py
 ├── app.py
 └── config.py
-
 
 # Creating the encode_token Function to generate JWTs.
 
@@ -354,7 +348,7 @@ Notice the change to the endpoint. It is no longer a dynamic route that has /<in
 
 
 
-RateLimiting-Caching-TokenAuthentication % python3 -m pip show Flask-Limiter 
+# RateLimiting-Caching-TokenAuthentication % python3 -m pip show Flask-Limiter 
 Name: Flask-Limiter
 Version: 3.12
 Summary: Rate limiting for flask applications
@@ -415,15 +409,23 @@ Pagination enhances performance and user experience by delivering results in sma
 
 http://127.0.0.1:5000/books?page=1&per_page=2
 
-
-
-
-
-
-
-
-
-
-
 http://127.0.0.1:5000/books?page=1&per_page=3
+
+# Understanding the Difference Between db.Table and Creating a Model for a Junction Table in SQLAlchemy
+# Introduction
+In SQLAlchemy, when defining a many-to-many relationship between two tables, you need to create a junction table (also called an association table or join table) to represent the connection between the two entities. SQLAlchemy offers two main ways to define this table:
+
+# Using db.Table: This method creates a simple, unmodeled junction table.
+Defining a Model for the Junction Table: This method involves creating a full model for the junction table, allowing for additional fields and more complex relationships.
+Both methods are valid, but they serve different use cases. Understanding the difference between them is crucial when building more complex databases.
+
+# Recap on using db.Table for a Simple Junction Table
+The db.Table method is useful when the junction table only serves to link two tables without needing any additional attributes.
+
+# Creating a Model for a Junction Table
+If the junction table needs to store more information (e.g., a timestamp, a quantity, or other attributes), you should create a full model class for the table.
+
+# When to Use
+Complex Many-to-Many Relationships: When you need to store additional data in the junction table, such as metadata or extra attributes.
+
 
