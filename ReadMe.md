@@ -366,3 +366,64 @@ Location: /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site
 Requires: Flask, limits, ordered-set, rich
 Required-by: 
 (venv) ferdinandniyongira@Ferdinands-MBP FlaskAPI-ApplicationFactoryPattern-
+
+
+# Editing our Many-to-Many Relationships
+
+# Creating Insightful endpoints Capitalizing on our Relationships
+
+Implementing Sorting Keys to make Insightful queries.
+
+# Applying a query parameter to refine our searching
+
+
+# Incorporating Query Parameters in our Endpoints
+What are Query Parameters?
+
+Query parameters are key-value pairs appended to the end of a URL after the ? symbol. They provide additional information to the server and are often used to filter, sort, or limit the results in API requests.
+Structure:
+
+A URL with query parameters looks like this:
+https://example.com/items?item_name=phone
+The query parameter here is item_name and the value we're assigning is phone. This could be used to search our database for items with "phone" in the name or description.
+Usage in APIs:
+
+Query parameters make it easier to customize responses from an API without changing the endpoint itself.
+By adding query parameters we can send information to our server, like a search term, category filter, or sort command, without having to send a full JSON payload.
+
+# Efficient Data retrieval with Pagination
+What is Pagination?
+
+Pagination divides large sets of data into manageable chunks or pages. This is crucial in APIs to prevent overwhelming users with too much data at once.
+
+# Pagination Methods:
+
+Limit and Offset: These are the most common methods for pagination.
+limit: Specifies how many results to return (page size).
+offset or page: Skips a certain number of results (page number).
+https://api.example.com/products?limit=10&offset=20
+This returns 10 products, starting from the 21st product (offset 20).
+Other Pagination Techniques:
+
+# Page and Page Size:
+https://api.example.com/products?page=2&page_size=10
+Similar to limit and offset but uses page and page_size.
+This fetches the second page with 10 results per page.
+# Why Use Pagination?
+
+Pagination enhances performance and user experience by delivering results in smaller, more digestible portions, and reduces server load.
+
+http://127.0.0.1:5000/books?page=1&per_page=2
+
+
+
+
+
+
+
+
+
+
+
+http://127.0.0.1:5000/books?page=1&per_page=3
+
