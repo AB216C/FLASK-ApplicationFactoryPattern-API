@@ -36,8 +36,8 @@ class Loan(Base):
   __tablename__ = 'loans'
 
   id: Mapped[int] = mapped_column(primary_key=True)
-  loan_date: Mapped[date] = mapped_column(db.Date)
-  member_id: Mapped[int] = mapped_column(db.ForeignKey('members.id'))
+  loan_date: Mapped[date] = mapped_column(db.Date, nullable=False)
+  member_id: Mapped[int] = mapped_column(db.ForeignKey('members.id'),nullable=False)
 
   member: Mapped['Member'] = db.relationship(back_populates='loans')
   books: Mapped[List['Book']] = db.relationship(secondary=loan_book, back_populates='loans')

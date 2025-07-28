@@ -26,8 +26,12 @@ pip3 install flask flask-sqlalchemy mysql-connector-python
 
 # Start with:
 
+
+
 python3 -m venv path/to/venv
 source path/to/venv/bin/activate
+
+python3 -m pip install Flask-Limiter
 
 # Packages:
 python3 -m pip install xyz
@@ -41,6 +45,9 @@ python3 -m pip install marshmallow-sqlalchemy
 python3 -m pip install mysql-connector-python
 
 python3 -m pip install Flask-Caching
+
+python3 -m pip install Flask-Limiter
+
 
 # Add schemas
 Flask-Marshmallow Documentation
@@ -103,6 +110,8 @@ Throttling requests to sensitive endpoints (login, registration, etc.)
 
 pip3 install Flask-Limiter --break-system-packages    //Not easy to install without breaking homebrew package
 
+python3 -m pip install Flask-Limiter
+
 # How Flask-Limiter Works
 Flask-Limiter allows you to set limits per route or globally. The rate limit syntax follows a simple format like 5 per minute or 100 per hour.
 
@@ -118,6 +127,8 @@ Improving response times for high-traffic endpoints
 pip3 freeze > requirements.txt
 
 pip3 install Flask-Caching --break-system-packages
+
+python3 -m pip install Flask-Caching 
 
 # Start with:
 
@@ -136,7 +147,6 @@ python3 -m pip install marshmallow-sqlalchemy
 
 python3 -m pip install mysql-connector-python
 
-python3 -m pip install Flask-Caching
 
 python3 -m pip install python-jose  #To handle authentication
 
@@ -341,3 +351,18 @@ Import token_required onto the user blueprint.
 The /login route simulates a login by issuing a token.
 We add the @token_required wrapper to the DELETE user route, so now a user needs to be logged in to be able to delete their account.
 Notice the change to the endpoint. It is no longer a dynamic route that has /<int:user_id> attached, this is because we get the users id from the token, and @token_required passes that id to delete_user().
+
+
+
+RateLimiting-Caching-TokenAuthentication % python3 -m pip show Flask-Limiter 
+Name: Flask-Limiter
+Version: 3.12
+Summary: Rate limiting for flask applications
+Home-page: https://flask-limiter.readthedocs.org
+Author: Ali-Akber Saifee
+Author-email: ali@indydevs.org
+License: MIT
+Location: /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages
+Requires: Flask, limits, ordered-set, rich
+Required-by: 
+(venv) ferdinandniyongira@Ferdinands-MBP FlaskAPI-ApplicationFactoryPattern-

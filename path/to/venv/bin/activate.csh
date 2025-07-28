@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/Users/ferdinandniyongira/Desktop/FLASK-ApplicationFactoryPattern-API/path/to/venv"
+setenv VIRTUAL_ENV "/Users/ferdinandniyongira/Desktop/FlaskAPI-ApplicationFactoryPattern-RateLimiting-Caching-TokenAuthentication/path/to/venv"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"

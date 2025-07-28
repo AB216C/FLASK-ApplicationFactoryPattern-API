@@ -1,11 +1,11 @@
-from app.blueprints.members.schemas import member_schema,members_schema,login_schema
+from app.blueprints.members.schemas import member_schema,members_schema #login_schema
 from app.models import Member,db
 from flask import request,jsonify
 from marshmallow import ValidationError
 from sqlalchemy import select
 from . import members_bp
-from app.extentions import limiter,cache
-from app.utils.util import encode_token,token_required
+# from app.extentions import limiter,cache
+# from app.utils.util import encode_token,token_required
 
 #====================Routes================
 # from flask import request
@@ -13,28 +13,28 @@ from app.utils.util import encode_token,token_required
 #At this time, @members_bp.route will be transformed into @members_bp.route
 
 #This code generate token after logging in using email and password
-@members_bp.route("/member/login", methods=['POST'])
-def login():
-    try:
-        credentials = login_schema.load(request.json)
-        email = credentials['email']
-        password = credentials['password']
-    except ValidationError as e:
-        return jsonify(e.messages), 400
+# @members_bp.route("/member/login", methods=['POST'])
+# def login():
+#     try:
+#         credentials = login_schema.load(request.json)
+#         email = credentials['email']
+#         password = credentials['password']
+#     except ValidationError as e:
+#         return jsonify(e.messages), 400
 
-    query = select(Member).where(Member.email == email)
-    member = db.session.execute(query).scalars().first()  # fixed typo
+#     query = select(Member).where(Member.email == email)
+#     member = db.session.execute(query).scalars().first()  # fixed typo
 
-    if member and member.password == password:
-        token = encode_token(member.id)
-        response = {
-            "status": "success",
-            "message": "Login successful",
-            "token": token
-        }
-        return jsonify(response), 200
-    else:
-        return jsonify({"Error": "Invalid email or password"})
+#     if member and member.password == password:
+#         token = encode_token(member.id)
+#         response = {
+#             "status": "success",
+#             "message": "Login successful",
+#             "token": token
+#         }
+#         return jsonify(response), 200
+#     else:
+#         return jsonify({"Error": "Invalid email or password"})
   
   #CREATE A MEMBER ROUTE
 
@@ -59,8 +59,8 @@ def create_member():
 
 #GET SELECTING ALL MEMBERS -Limiter and Cache was added to this route
 @members_bp.route("/members", methods=['GET'])
-@limiter.limit("5 per 30 seconds") #Limit the number of requests to 5 per 30 seconds
-@cache.cached(timeout=45) #Cache the response for 30 seconds
+#@limiter.limit("5 per 30 seconds") #Limit the number of requests to 5 per 30 seconds
+#@cache.cached(timeout=45) #Cache the response for 30 seconds
 def get_members():
   query = select(Member)
   members = db.session.execute(query).scalars().all()
@@ -81,7 +81,7 @@ def get_member(member_id):
 #UPDATE A MEMBER
 
 @members_bp.route("/members/<int:member_id>", methods=['PUT'])
-@token_required
+# @token_required
 def update_member(member_id):
   member = db.session.get(Member,member_id)
 
@@ -102,7 +102,7 @@ def update_member(member_id):
 
 #DELETE A MEMBER
 @members_bp.route("/members/<int:member_id>", methods=['DELETE'])
-@token_required
+# @token_required
 
 def delete_member(member_id):
   member = db.session.get(Member,member_id)
